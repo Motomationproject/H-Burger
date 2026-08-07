@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>H BURGER | Menu</title>
+  <meta name="description" content="H Burger Menu">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Clean Vertical Menu Image Stream -->
+  <main class="menu-feed">
+    <!-- Story 1 -->
+    <img src="images/story-01.jpg.jpeg" alt="H Burger Menu 1" onclick="openZoom(this.src)" loading="eager">
+    
+    <!-- Story 2 -->
+    <img src="images/story-02.jpg.jpeg" alt="H Burger Menu 2" onclick="openZoom(this.src)" loading="eager">
+    
+    <!-- Story 3: Clean original image -->
+    <img src="images/story-03.jpg.jpeg" alt="H Burger Menu 3" onclick="openZoom(this.src)" loading="eager">
+
+    <!-- Story 4: Chicken Section (New high-res picture with native $6.5, $10 prices) -->
+    <img src="images/story-04.jpg.jpeg" alt="H Burger Menu 4 (Chicken)" onclick="openZoom(this.src)" loading="eager">
+    
+    <!-- Story 5: Combos with Happy Box ($40) & Burger Tower ($45) overlays -->
+    <div class="img-container">
+      <img src="images/story-05.jpg.jpeg" alt="H Burger Menu 5" onclick="openZoom(this.src)" loading="eager">
+      <div class="price-overlay hb-price">$40</div>
+      <div class="price-overlay bt-price">$45</div>
+    </div>
+
+    <!-- Story 6 -->
+    <img src="images/story-06.jpg.jpeg" alt="H Burger Menu 6" onclick="openZoom(this.src)" loading="eager">
+
+    <!-- Story 7: Add-ons with ADD CURLY FRIES (.5) overlay -->
+    <div class="img-container">
+      <img src="images/story-07.jpg.jpeg" alt="H Burger Menu 7" onclick="openZoom(this.src)" loading="eager">
+      <div class="curly-fries-dot5">
+        <span class="dot">.</span><span class="five">5</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- Tap to Zoom Modal -->
+  <div id="zoomModal" class="zoom-modal" onclick="closeZoom()">
+    <img id="zoomImg" src="" alt="Menu Zoomed">
+  </div>
+
+  <script>
+    function openZoom(src) {
+      document.getElementById('zoomImg').src = src;
+      document.getElementById('zoomModal').style.display = 'flex';
+    }
+    function closeZoom() {
+      document.getElementById('zoomModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

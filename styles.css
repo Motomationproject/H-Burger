@@ -1,0 +1,173 @@
+/* Clean, Mobile-First Seamless Menu Stream */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0b0c0e;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.menu-feed {
+  width: 100%;
+  max-width: 600px; /* Perfect mobile width preview on desktop */
+  display: flex;
+  flex-direction: column;
+  background-color: #000;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+}
+
+.menu-feed img {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.img-container {
+  position: relative;
+  width: 100%;
+  line-height: 0;
+}
+
+.img-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* White Box Price Overlays for Page 5 */
+.price-overlay {
+  position: absolute;
+  background-color: #ffffff;
+  color: #121316;
+  font-family: 'Bebas Neue', 'Impact', sans-serif;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  line-height: 1;
+}
+
+.hb-price {
+  left: 42.5%;
+  top: 32.8%;
+  width: 6.2%;
+  height: 3.3%;
+  font-size: clamp(12px, 3.2vw, 24px);
+}
+
+.bt-price {
+  left: 86.5%;
+  top: 83.7%;
+  width: 6.2%;
+  height: 3.3%;
+  font-size: clamp(12px, 3.2vw, 24px);
+}
+
+/* Curly Fries .5 Overlay for Page 7 */
+.curly-fries-dot5 {
+  position: absolute;
+  left: 73.0%;
+  top: 27.8%;
+  color: #ffffff;
+  font-family: 'Bebas Neue', 'Impact', sans-serif;
+  font-size: clamp(16px, 4.2vw, 32px);
+  line-height: 1;
+  letter-spacing: 0px;
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.4), 1px 1px 2px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+  display: flex;
+  align-items: flex-end;
+}
+
+.curly-fries-dot5 .dot {
+  position: relative;
+  left: 1px;
+  top: -2px;
+}
+
+.curly-fries-dot5 .five {
+  position: relative;
+  top: -4px;
+  left: 0px;
+}
+
+/* Classic Chicken .5 Overlay for Page 4 */
+.classic-chicken-dot5 {
+  position: absolute;
+  left: 83.6%;
+  top: 22.3%;
+  color: #ffffff;
+  font-family: 'Bebas Neue', 'Impact', sans-serif;
+  font-size: clamp(16px, 4.2vw, 32px);
+  line-height: 1;
+  letter-spacing: 0px;
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.4), 1px 1px 2px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+  display: flex;
+  align-items: flex-end;
+}
+
+.classic-chicken-dot5 .dot {
+  position: relative;
+  left: 3px;
+  top: -1px;
+}
+
+.classic-chicken-dot5 .five {
+  position: relative;
+  top: -1px;
+  left: 1px;
+  font-size: 1.2em;
+}
+
+/* SMASH BURGER $9 Image Overlay for Page 3 */
+.menu-feed img.price-9-img {
+  position: absolute;
+  left: 77.2%;
+  top: 66.6%;
+  width: 9.5% !important;
+  height: auto;
+  pointer-events: none;
+}
+
+/* H Burger & H Burger Chicken $10 Image Overlays */
+.menu-feed img.price-10-img {
+  position: absolute;
+  left: 73.5%;
+  top: 81.0%;
+  width: 18.0% !important;
+  height: auto;
+  pointer-events: none;
+}
+
+/* Lightbox Modal for Tap to Zoom */
+.zoom-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.zoom-modal img {
+  max-width: 100%;
+  max-height: 98vh;
+  object-fit: contain;
+  border-radius: 4px;
+}

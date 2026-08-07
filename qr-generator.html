@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>H BURGER - Printable Table QR Generator</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #111;
+      color: #fff;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .container {
+      max-width: 500px;
+      width: 100%;
+      background: #1c1c1e;
+      padding: 24px;
+      border-radius: 16px;
+      border: 1px solid #333;
+    }
+    h1 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+    p {
+      color: #aaa;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #ddd;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #444;
+      background: #000;
+      color: #fff;
+      font-size: 1rem;
+      margin-bottom: 16px;
+    }
+    .stand-card {
+      background: #ffffff;
+      color: #000;
+      padding: 28px;
+      border-radius: 16px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .stand-card h2 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 4px;
+    }
+    .table-tag {
+      display: inline-block;
+      background: #000;
+      color: #fff;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-bottom: 16px;
+    }
+    #qrcode {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0 16px 0;
+    }
+    #qrcode img, #qrcode canvas {
+      border: 4px solid #fff;
+      border-radius: 8px;
+    }
+    .instruct {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #333;
+    }
+    .btn-print {
+      width: 100%;
+      padding: 14px;
+      background: #ff4757;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    @media print {
+      body * { visibility: hidden; }
+      .stand-card, .stand-card * { visibility: visible; }
+      .stand-card {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 300px;
+        border: 2px solid #000;
+      }
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+  <div class="container">
+    <h1>🖨️ Table QR Stand Generator</h1>
+    <p>Use this tool to generate printable table QR codes for your restaurant tables.</p>
+
+    <label for="urlInput">Netlify Website URL:</label>
+    <input type="url" id="urlInput" placeholder="https://hburger-menu.netlify.app">
+
+    <label for="tableInput">Table Label:</label>
+    <input type="text" id="tableInput" value="TABLE 01">
+
+    <!-- Table Stand Card to Print -->
+    <div class="stand-card">
+      <h2>🍔 H BURGER</h2>
+      <div class="table-tag" id="tableTag">TABLE 01</div>
+      <div id="qrcode"></div>
+      <div class="instruct">
+        SCAN TO VIEW MENU
+        <div style="font-weight:normal; font-size:0.75rem; color:#666; margin-top:2px;">Point camera to scan</div>
+      </div>
+    </div>
+
+    <button class="btn-print" onclick="window.print()">Print Table Stand</button>
+  </div>
+
+  <script>
+    const urlInput = document.getElementById('urlInput');
+    const tableInput = document.getElementById('tableInput');
+    const tableTag = document.getElementById('tableTag');
+    const qrDiv = document.getElementById('qrcode');
+
+    function updateQr() {
+      const url = urlInput.value.trim() || 'https://hburger-menu.netlify.app';
+      tableTag.textContent = tableInput.value.trim() || 'TABLE 01';
+      qrDiv.innerHTML = '';
+      if (typeof QRCode !== 'undefined') {
+        new QRCode(qrDiv, {
+          text: url,
+          width: 180,
+          height: 180,
+          colorDark : "#000000",
+          colorLight : "#ffffff",
+          correctLevel : QRCode.CorrectLevel.H
+        });
+      } else {
+        qrDiv.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(url)}">`;
+      }
+    }
+
+    urlInput.value = window.location.href.replace('qr-generator.html', '');
+    urlInput.addEventListener('input', updateQr);
+    tableInput.addEventListener('input', updateQr);
+    updateQr();
+  </script>
+</body>
+</html>
